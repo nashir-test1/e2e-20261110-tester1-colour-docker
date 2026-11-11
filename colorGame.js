@@ -19,6 +19,7 @@ var easyBtn=document.querySelector("#easyBtn");
 var hardBtn=document.querySelector("#hardBtn");
 
 easyBtn.addEventListener("click",function(){
+	resetFeedback();
 	hardBtn.classList.remove("selected");
 	easyBtn.classList.add("selected");
 	numSquares=3;
@@ -35,6 +36,7 @@ easyBtn.addEventListener("click",function(){
 	}
 });
 hardBtn.addEventListener("click",function(){
+	resetFeedback();
 	easyBtn.classList.remove("selected");
 	hardBtn.classList.add("selected");
 	numSquares=6;
@@ -48,6 +50,7 @@ hardBtn.addEventListener("click",function(){
 });
 
 reset.addEventListener("click",function(){
+	resetFeedback();
 	//genrate all new colors
 	colors=generateRandomColors(numSquares); 
 	//pick a new random color
@@ -60,7 +63,6 @@ reset.addEventListener("click",function(){
 	{
 		squares[i].style.backgroundColor=colors[i];
 	}
-	h1.style.backgroundColor="steelblue";
 
 });
 for(var i=0;i<squares.length;i++)
@@ -113,4 +115,9 @@ function randomColor(){
 function pickColor() {
 	var random=Math.floor(Math.random()*colors.length);
 	return colors[random];
+}
+function resetFeedback(){
+	messageDisplay.textContent="";
+	reset.textContent="New Colors";
+	h1.style.backgroundColor="steelblue";
 }
